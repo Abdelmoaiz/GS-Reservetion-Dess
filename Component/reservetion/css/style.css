@@ -1,0 +1,425 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fff;
+    color: rgb(26, 24, 24);
+}
+a{
+    text-decoration: none;
+}
+
+header{
+    width: 100%;
+    padding:5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: rgb(20, 167, 196);
+    color: #fff;
+    
+
+}
+.exit,.home{
+    margin: 5px 0;
+    border-radius: 10px;
+    font-size: 18px;
+    color:#fff;
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    text-align: center;
+    cursor: pointer;
+
+}
+.casher:hover,.home:hover{
+    background-color: rgba(79, 202, 206, 0.788);
+
+}
+.casher:active,.home:active{
+    background-color: rgba(44, 138, 141, 0.788);
+
+}
+.userName,.dateAndTime{
+    font-size: 22px;
+    font-weight: bold;
+}
+aside{
+    /* width: 15%; */
+    /* float: right; */
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    
+    /* background-color: rgb(218, 230, 241); */
+
+}
+
+.content{
+    width: 100%;
+    float: left;
+    margin: auto;
+    position: relative;
+}
+.makeUp,.accessories,.search,.recieving,.inputsItems,#allDetails,.settlement{
+    display: none;
+}
+.inputs{
+    background-color: rgb(166, 201, 228);
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 10px 30px 10px;
+}
+
+input,button,.button,select,textarea{
+    width: 30%;
+    height: 40px;
+    margin: 5px auto;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 15px;
+    color:rgb(20, 20, 20);
+    border: 2px solid rgb(20, 167, 196);
+    outline: none;
+    padding: 5px 10px;
+    cursor: pointer;
+
+}
+
+#btnShowInp{
+    display: block;
+    margin-right: 0;
+}
+
+aside button{
+    display: block;
+    width: 100%;
+    transition: .2s ease-in-out;
+    font-size: 16px;
+    font-weight: bold;
+    color:#fff ;
+}
+aside button:hover{
+    background-color: rgb(33, 161, 112);
+    transform: translate(-6px);
+}
+aside button:first-child{
+     background-color: rgb(33, 161, 112);
+   
+}
+form{
+    margin: 20px auto;
+}
+#reserveAdd{
+    display: none;
+}
+input:focus{
+    transform: scaleX(1.04);
+    background-color: rgb(33, 161, 112);
+
+}
+#addItems{
+    width: auto;
+}
+button{
+    background-color: rgb(110, 219, 247);
+
+}
+
+button:hover{
+    background-color: rgb(127, 148, 202);
+    color: #fff;
+
+}
+button:active{
+    transform: scaleX(1.02);
+    background-color: rgb(4, 141, 88);
+
+}
+.priceOnly{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+}
+.showMessage{
+    display: none;
+    width: 500px;
+    height: 200px;
+    padding: 70px 20px 20px 20px;
+    border: 1px solid ;
+    margin: auto;
+    position: absolute;
+    top:15%;
+    left: 35%;
+    z-index: 10;
+    transform: translate(50% 50%);
+    box-shadow: 10px 10px 5px rgb(110, 110, 110);
+    background-color: rgb(86, 110, 121);
+    color: #fff;
+    border-radius: 10px;
+}
+.showMessage img{
+    text-align: center;
+    margin: auto;
+    border: 1px solid;
+}
+.showMessage h3{
+    text-align: center;
+    margin-top: 50px;
+    margin: auto;
+}
+.showMessage .divInputs{
+    display: flex;
+    gap: 10px;
+    margin-top: 50px;
+
+}
+.invoiceClient{
+    display: none;
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 10pz;
+}
+.mainDetails{
+    margin-right: 60px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 300px;
+}
+.mainDetails:nth-of-type(3){
+    justify-content: center;
+}
+.mainDetails .receiptNamePers::before{
+    content: 'الاسم : ';
+}
+.mainDetails .receiptDateReserve{
+    margin-right: 150px;
+    text-align: center;
+}
+.mainDetails .receiptDateReserve::before{
+    content: 'تاريخ الحجز : ';
+}
+.mainDetails .receiptNumReserve::before{
+    content: 'رقم الحجز : ';
+}
+.mainDetails .receiptPhone::before{
+    content: 'رقم الهاتف : ';
+
+}
+.mainDetails .receiptAdress::before{
+    content: 'العنوان : ';
+
+}
+
+.invoiceClient table{
+    width: 100%;
+    margin: auto;
+}
+
+.output{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+}
+h2{
+    color:#fff;
+    text-align: center;
+}
+table{
+    width: 100%;
+    /* margin-top: 20px; */
+    text-align: center;
+}
+table button{
+    width: 90%;
+    color: #000;
+    font-weight: bold;
+    height: 20px;
+    padding: 1px;
+    margin: 1px auto;
+    background-color: #eee;
+    border: 1px solid;
+    border-radius: 5px;
+}
+table tr{
+    height: 15px;
+    color: #000;
+}
+table .headTable{
+    background-color: rgb(20, 167, 196);
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+@media (max-width:767px) {
+    header{
+        padding:5px 5px;
+        text-align: center;
+        font-size: 10px;
+
+    }
+    header p{
+        display: none;
+    }
+    
+    #total,#gain-trading,#gain-normal,#quan-total{
+        font-size: 10px;
+        text-align: center;
+    }
+    table{
+        font-size: 10px;
+
+    }
+    table button{
+        font-size: 10px;
+        margin: 3px auto;
+        padding: 0 5px;
+        background-color: #ddd;
+
+    }
+
+}
+#allDetails{
+    width: 100%;
+    background-color: rgb(16, 114, 143);
+    color: #fff;
+    border: 2px solid #fff;
+}
+#allDetails .headTable{
+    background-color: rgb(16, 114, 143);
+}
+.invoice,.receipt{
+    display: none;
+    font-weight: bold;
+}
+
+.invoice .invoice-content{
+    border: 2px solid #000;
+    padding: 0 20px;
+
+}
+
+.receipt .recipt-content {
+    border: 2px solid #000;
+    padding: 5px 10px 10px ;
+    margin: 5px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.receipt .recipt-content .content{
+    width: 100%;
+    text-align: center;
+    
+   
+}
+.receipt .recipt-content .content .mainDetails{ 
+    display: flex;
+    justify-content: space-around;
+   
+}
+.receipt .recipt-content .content .table-items{
+    width: 40%;
+    border: 1px solid;
+}
+.receipt .recipt-content .content table{
+    width: 70%;
+
+}
+.receipt .recipt-content .content table td{
+    text-align: center;
+    padding-right: 10px;
+    font-size: 12px;
+    
+}
+.invoice .header, .receipt .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    border-bottom: 2px dashed #000;
+    margin-bottom: 5px;
+
+}
+
+
+.invoice .header .engy ,.receipt .header .engy{
+    font-size: 36px;
+    font-weight: 900;
+}
+.invoice .header .logo, .receipt .logo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 35%;
+}
+.invoice .header .logo img ,.receipt .logo img{
+    width: 40%;
+    border-radius: 20px;
+
+}
+.invoice p,.receipt p{
+    font-size: 12px;
+}
+/* .receipt .content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} */
+.invoice ol{
+    margin-right: 20px;
+}
+
+.invoice footer{
+    text-align: center;
+}
+
+
+.receipt footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.alarm1,.alarm2{
+    display: none;
+    width: 50%;
+    position: fixed;
+    z-index: 10;
+    top: 100px;
+    left: 25%;
+    margin: 50px auto;
+    padding: 20px;
+    /* display: flex; */
+    flex-direction: column;
+    border: 1px solid rgb(5, 132, 157);
+    background-color: rgb(16, 105, 122);
+    border-radius: 20px;
+    text-align: center;
+  
+  }
+  
+  .alarm1 input,.alarm2 input{
+    width: 80%;
+    margin: 20px auto;
+    cursor: pointer;
+  }
+  .alarm1 .buttons button,.alarm2 .buttons button{
+    width: 40%;
+    background-color: rgb(6, 153, 183);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+  
+  }

@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fff;
+    color: rgb(26, 24, 24);
+  }
+  a{
+    font-size: 24px;
+    text-decoration: none;
+    color: #fff;
+  }
+  .container{
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+
+  }
+  .logo{
+    width: 55%;
+    margin: auto;
+    padding: 11px;
+    font-size: 34px;
+    text-align: center;
+  }
+  img{
+    width: 25%;
+    border-radius: 50%;
+    margin: auto;
+  
+  }
+  input,button{
+    width: 30%;
+    height: 40px;
+    margin: 5px auto;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 15px;
+    color:rgb(20, 20, 20);
+    border: 2px solid rgb(20, 167, 196);
+    outline: none;
+    padding: 5px 10px;
+    cursor: pointer;
+
+}
+input{
+  width: 50%;
+}
+
+button{
+  background-color: rgb(110, 219, 247);
+
+}
+
+
+  .logo h3{
+    color: #000;
+  }
+  .logo h3 .engy{
+    color: #fff;
+    font-size: 48px;
+    font-weight: 900;
+  }
+  .home{
+    /* height: 100vh; */
+    background-image: url(../../../img/1635178789689.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color:rgb(13, 182, 219);
+    color: #fff;
+  }
+  .home .app{
+    text-align: center;
+    padding: 10px 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .home .app .about-us h1{
+    font-size: 40px;
+    font-weight: bold;
+  }
+  .home .app .about-us p{
+    font-size: 30px;
+
+  }
+  .home .app .app-home{
+    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(400px,1fr));
+    grid-gap:10px;
+    
+  }
+  
+  .home .app .app-home .invo img{
+    width: 90%;
+    height: 130px;
+    border-radius: 10px;
+    cursor: pointer;
+    
+  }
+  .divAlarm{
+    display: none;
+    
+
+  }
+  .alarm{
+    width: 40%;
+    position: fixed;
+    top: 100px;
+    left: 25%;
+    margin: 50px auto;
+    padding: 20px;
+    /* display: flex; */
+    flex-direction: column;
+    border: 1px solid rgb(5, 132, 157);
+    background-color: rgb(16, 105, 122);
+    border-radius: 20px;
+    text-align: center;
+  
+  }
+  
+  .alarm input{
+    margin: 20px auto;
+    cursor: pointer;
+  }
+  .alarm .buttons button{
+    width: 25%;
+    background-color: rgb(6, 153, 183);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+  
+  }
+  .alarm .buttons button:hover{
+    background-color: rgb(70, 196, 221);
+
+
+  }
+/* @media (max-width:991px) {
+  .home .app .app-home{
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+    grid-gap:10px;
+    
+  }
+  
+  
+  
+}
+@media (max-width:767px) {
+  .home .app .app-home{
+    grid-template-columns: repeat(auto-fill,minmax(170px,1fr));
+    grid-gap:10px;
+    
+  }
+  
+} */

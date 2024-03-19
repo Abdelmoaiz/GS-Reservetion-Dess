@@ -29,12 +29,9 @@
     </div>
     <div class="content">
         <section class="inputsItems">
-            <div class="priceOnly">
-                <input type="text" value="" id="searchBarcode" onkeyup="search(this.value)" placeholder="بحث">
-            </div>
             <form class="inputs">
                 <div class="priceOnly">
-                    <input type="text" name="" value="" id="barcode" placeholder="ادخل الباركود" onkeyup="checkBarcode();" minlength="2" required>
+                    <input type="text" name="" value="" id="barcode" placeholder="ادخل الباركود" onkeyup="checkBarcode();" minlength="5" required>
                     <input type="text" name="" value="" id="title" placeholder="اسم الصنف" required>
                     <input type="text" name="" value="" id="color" placeholder="اللون" required>
                     <input  type="text" name="" value="" id="priceNight" placeholder=" سعر الليلة">
@@ -54,7 +51,9 @@
                       <input type="file" id="upload">
                     </div>
                 </div>
-                
+                <div class="priceOnly">
+                    <input type="text" value="" id="searchBarcode" onkeyup="search(this.value)" placeholder="بحث">
+                </div>
                 <div class="priceOnly">
                     <button type="submit"  id="create">اضافة صنف جديد</button>
                     <button type="reset" onclick="exitInput();">الغاء</button>
