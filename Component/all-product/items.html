@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الاصناف</title>
+    <link rel="stylesheet" href="css/style-dist.css">
+</head>
+<body dir="rtl">
+    
+    <header>
+        <a class="home" href="../home/home.html"><img src="../../img/huanfang.ico" alt="home"></a>
+        <span class="userName"></span>
+        <h1>الاصناف</h1>
+        <span class="dateAndTime"></span>
+        <a class="exit" href="../../index.html"><img src="../../img/cancel.ico" alt="exit"></a>
+    </header>
+    <aside>
+        <button id="" onclick="addItems();">اضافة صنف</button>
+        <button id="" onclick="refreshAuto();">تحديث</button>
+    </aside>
+    <div class="alarm">
+        <h3 style="color: #fff; margin: 10px;">هل تريد الحذف</h3>
+        <div class="buttons">
+            <button id="btnCheckEdite" onclick="checkPass();">موافق</button>
+            <button id="btnCancel" onclick="exitePass();">الغاء</button>
+        </div>
+    </div>
+    <div class="content">
+        <section class="inputsItems">
+            <div class="priceOnly">
+                <input type="text" value="" id="searchBarcode" onkeyup="search(this.value)" placeholder="بحث">
+            </div>
+            <form class="inputs">
+                <div class="priceOnly">
+                    <input type="text" name="" value="" id="barcode" placeholder="ادخل الباركود" onkeyup="checkBarcode();" minlength="2" required>
+                    <input type="text" name="" value="" id="title" placeholder="اسم الصنف" required>
+                    <input type="text" name="" value="" id="color" placeholder="اللون" required>
+                    <input  type="text" name="" value="" id="priceNight" placeholder=" سعر الليلة">
+                    <select id="itemsState">
+                        <option hidden >حالة الصنف</option>
+                        <option value="جاهز">جاهز</option>
+                        <option value="محجوز">محجوز</option>
+                        <option value="تالف">تالف</option>
+                    </select>
+                </div>
+                <div class="priceOnly divUpload">
+                    <div class="img">
+                      <img id="img" >
+                    </div>
+                    <div class="upload">
+                      <label for="upload" class="forLabel">اضافة صورة</label>
+                      <input type="file" id="upload">
+                    </div>
+                </div>
+                
+                <div class="priceOnly">
+                    <button type="submit"  id="create">اضافة صنف جديد</button>
+                    <button type="reset" onclick="exitInput();">الغاء</button>
+                </div>
+            </form>
+            
+            <div class="cruds">
+                <table border="1">
+                    <tr>
+                        <th colspan="13" class="headTable">كل الاصناف</th>
+                    </tr>
+                    <tr>
+                        <!-- <th>م</th> -->
+                        <th>الباركود</th>
+                        <th>اسم الصنف</th>
+                        <th>اللون</th>
+                        <th>سعر الليلة</th>
+                        <th>حالة الصنف</th>
+                        <th>صورة الصنف</th>
+                        <th>تعديل</th>
+                        <th>حذف</th>
+                    </tr>
+                    <tbody class="tbodyItems">
+                        
+                        
+                    </tbody>
+                </table>
+                <div class="View" onclick="hideImg();">
+                    <img class="imgView" onclick="hideImg();" >
+                </div>
+            </div>
+        </section> 
+    </div>
+    <script src="js/main-dist.js"></script>
+</body>
+</html>

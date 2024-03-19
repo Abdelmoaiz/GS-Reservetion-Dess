@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصادرات</title>
+    <link rel="stylesheet" href="css/purchases-dist.css">
+</head>
+<body dir="rtl">
+    <div class="app">
+        <header>
+            <a class="home" href="../home/home.html"><img src="../../img/huanfang.ico" alt="home"></a>
+            <span class="userName"></span>
+            <h1>المصروفات</h1>
+            <span class="dateAndTime"></span>
+            <a class="exit" href="../../index.html"><img src="../../img/cancel.ico" alt="exit"></a>
+        </header>
+        <aside>
+            <button id=""><a href="../accountClients/index.html">المرتبات</a></button>
+            <button id=""><a href="../makeUp/makeUp.html">موظفين الميكب</a></button>
+            <button id=""><a href="../suplaiers/index.html">عملاء موردين</a></button>  
+            <button id=""><a href="../expenses/expenses.html">مصروفات</a></button>
+            <button id=""><a href="../reports/report.html">التقارير</a></button>
+    
+        </aside>
+        <div class="alarm">
+            <div class="inputsAlarm">
+                <h3 style="color: #fff; margin: 10px;">هل تريد الحذف</h3>
+                <div class="buttons">
+                    <button id="btnCheckEdite" onclick="checkPass();">موافق</button>
+                    <button id="btnCancel" onclick="exitePass();">الغاء</button>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            
+            <section class="inputsexpenses">
+                <form class="inputs">
+                    <div class="priceOnly">
+                        <input type="date" name="" value="" id="expensesDate" placeholder=" " required>
+                        <input  type="text" name="" value="" id="expensesType" placeholder="نوع المصروف" required>
+                        <input  type="text" name="" value="" id="price" placeholder="المبلغ" required>
+                        <textarea name="" id="expensesDetails" cols="50" rows="2" placeholder="التفاصيل"></textarea>
+                    </div>
+                    <div class="priceOnly">
+                        <button type="submit" onclick="createExpenses();" id="create">اضافة  </button>
+                        <button type="reset" >الغاء</button>
+                        <button onclick="refresh();">تحديث</button>
+                    </div>
+                </form>
+                <div class="cruds">
+                    <table border="1">
+                        <tr>
+                            <th colspan="7" class="headTable">كل المصروفات</th>
+                        </tr>
+                        <tr>
+                            <th>التاريخ</th>
+                            <th>نوع المصروف</th>
+                            <th>المبلغ</th>
+                            <th>التفاصيل</th>
+                            <th>تعديل</th>
+                            <th>حذف</th>
+                        </tr>
+                        <tbody class="tbodyExpenses">
+                            
+                            
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </section>
+            
+            
+        </div>
+        
+    </div>
+    <div  class="tablePrint" onclick="exiteTable();">
+                
+        
+    </div>
+    
+    <script src="js/purchases-dist.js"></script>
+</body>
+</html>

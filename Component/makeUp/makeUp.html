@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الحسابات</title>
+    <link rel="stylesheet" href="css/style-dist.css">
+</head>
+<body dir="rtl">
+    <div class="app">
+        <header>
+            <a class="home" href="../home/home.html"><img src="../../img/huanfang.ico" alt="home"></a>
+            <span class="userName"></span>
+            <h1>موظفين الميكب</h1>
+            <span class="dateAndTime"></span>
+            <a class="exit" href="../../index.html"><img src="../../img/cancel.ico" alt="exit"></a>
+        </header>
+        <aside>
+            <button id=""><a href="../accountClients/index.html">المرتبات</a></button>
+            <button id=""><a href="../makeUp/makeUp.html">موظفين الميكب</a></button>
+            <button id=""><a href="../suplaiers/index.html">عملاء موردين</a></button>  
+            <button id=""><a href="../expenses/expenses.html">مصروفات</a></button>
+            <button id=""><a href="../reports/report.html">التقارير</a></button>
+
+ 
+        </aside>
+        <div class="alarm">
+            <div class="inputsAlarm">
+                <h3 style="color: #fff; margin: 10px;">هل تريد الحذف</h3>
+                <div class="buttons">
+                    <button id="btnCheckEdite" onclick="checkPass();">موافق</button>
+                    <button id="btnCancel" onclick="exitePass();">الغاء</button>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+                
+            <section class="inputsMakeUp" >
+                <form class="addEmployeeMakeUp" >
+                    <div class="priceOnly">
+                        <input  type="text" name="" value="" id="nameMakeUp" placeholder="اسم موظف الميكب"  required>
+                        <input  type="text" name="" value="" id="idPersonalmakeUp" maxlength="14" placeholder="الرقم القومي"  required>
+                        <input  type="text" name="" value="" id="phoneMakeUp" maxlength="11" placeholder="رقم التليفون"  required>
+                        <input  type="text" name="" value="" id="numReserve" onkeyup="getReserve();" placeholder="رقم الحجز"  required>
+                        <input  type="date" name="" value="" id="dateReserve" placeholder="تاريخ الحجز"  required>
+                        <input  type="text" name="" value="" id="nameReserve" placeholder="اسم العميل"  required>
+                    </div>
+                    <div class="priceOnly">
+                        <input  type="text" name="" value="" id="typeMakeUp" placeholder="نوع الميكب"  required>
+                        <input  type="number" name="" value="" id="priceMakeUp" onkeyup="getPriceMakeUp();" placeholder="سعر الميكب"  required>
+                        <input  type="number" name="" value="" id="paidMakeUp" onkeyup="calcRemainMakeUp();" placeholder="المبلغ الواصل"  required>
+                        <input  type="number" name="" value="" id="remainMakeUp" onkeyup="" placeholder="المبلغ المتبقي"  required>
+                    </div>
+                    
+                    <div class="priceOnly">
+                        <button type="button" class="createEmplMakeUp">اضافة</button>
+                        <button type="button" class="viewSearchEmplMakeUp">بحث</button>
+                        <button type="button" onclick="printPage();">طباعة</button>
+                        <button type="reset" >الغاء</button>
+                        <button type="button" onclick="refresh();">تحديث</button>
+
+                    </div>
+                </form>
+                <form class="searchEmployeeMakeUp" >
+                    <div class="priceOnly">
+                        <input  type="text" name="" value="" id="wordSearch" onkeyup="searchMakeName(this.value);" placeholder="ابحث"  required>
+                        <!-- <input  type="date" name="" value="" id="dateSearchMak" onchange="searchMakeDate(this.value);"  placeholder="تاريخ الحجز"  required> -->
+                    </div>
+                    <div class="priceOnly" style="display: none;">
+                        <button type="button" class="viewAddEmplMakeUp">اضافة</button>
+                        <button type="button" class="searchEmplMakeUp" >بحث</button>
+                        <button type="button" class="printEmplMakeUp">طباعة</button>
+                        <button type="reset" >الغاء</button>
+                        <button type="button" onclick="refresh();">تحديث</button>
+
+                    </div>
+                </form>
+                
+                <div class="cruds " >
+                    <div class="tableAllEmployees1">
+                        <table border="1" >
+                            <tr>
+                                <th colspan="14" class="headTable">موظفين الميكب</th>
+                            </tr>
+                            <tr>
+                                <th>التاريخ</th>
+                                <th>اسم المستخدم</th>
+                                <th>اسم موظف الميكب</th>
+                                <th>رقم الحجز</th>
+                                <th>تاريخ الحجز</th>
+                                <th>اسم العروسة</th>
+                                <th>نوع الميكب</th>
+                                <th> مبلغ الميكب</th>
+                                <th>المبلغ الواصل</th>
+                                <th>المبلغ المتبقي</th>
+                                <th>طباعة الايصال</th>
+                                <th>تعديل</th>
+                                <th>حذف</th>
+                            </tr>
+                            <tbody class="tbodyEmployeesMakeUP1">
+                                
+                                
+                            </tbody>
+                        </table>
+                        
+                        
+                    </div>
+                    <div class="tableAllEmployees2" style="display: none;">
+                        <table border="1" >
+                            <tr>
+                                <th colspan="14" class="headTable">موظفين الميكب</th>
+                            </tr>
+                            <tr>
+                                <th>م</th>
+                                <th>التاريخ</th>
+                                <th>اسم المستخدم</th>
+                                <th>اسم موظف الميكب</th>
+                                <th>رقم الحجز</th>
+                                <th>تاريخ الحجز</th>
+                                <th>اسم العروسة</th>
+                                <th>نوع الميكب</th>
+                                <th> مبلغ الميكب</th>
+                                <th>المبلغ الواصل</th>
+                                <th>المبلغ المتبقي</th>
+                                <th>طباعة الايصال</th>
+                                <th>تعديل</th>
+                                <th>حذف</th>
+                            </tr>
+                            <tbody class="tbodyEmployeesMakeUP2">
+                                
+                                
+                            </tbody>
+                        </table>
+                        
+                        
+                    </div>
+                    
+                    
+                </div>
+                
+                
+            </section>
+        </div>
+        
+    </div>
+
+   
+    <div class="receipt">
+        <div  class="recipt-content">
+            <div class="header">
+                <div class="titleHeader">
+                    <h3>بيوتي سنتر <span class="engy">إنجـي</span></h3>
+                    <p>01158003238</p>
+                    <p>شارع طريق النصر - بعد التوحيد والنور ب 200 متر - بجوار فرن السفير الدور الثاني</p>
+                </div>
+                <div class="logo">
+                    <h4>مع إنجي انتي في حتة تانية خالص</h4>
+                    <img src="../../img/logo.jpg" alt="logo">
+                </div>
+            </div>
+            <div class="content">
+                <div class="content-details">
+                    <p>اسم موظف الميكب : <span class="receiptMakeUpName">.....................................................</span></p>
+                    <p>اسم المستخدم  : <span class="receiptUserName">.....................................................</span></p>
+                    <p>تاريخ الحجز : <span class="receiptDateReserve">...................................................</span></p>
+                    <p>رقم الحجز : <span class="receiptNumReserve">......................................................</span></p>
+                    <p>اسم العروسة : <span class="receiptNamePers">....................................................</span></p>
+                    <p>اسم الصنف : <span class="receiptItems">...........................................................</span></p>
+                    <p> المبلغ : <span class="receiptPriceItems">......................................................</span></p>
+                    <p>المبلغ المدفوع : <span class="receiptPaid">.......................................................</span></p>
+                    <p> الباقي : <span class="receiptRemain">.............................................................</span></p>
+                    
+                </div>
+                
+            </div>
+
+            <hr width="50%" style="margin:10px auto;">
+
+            <footer>
+                <p>نحرير في :  <span class="receiptDateNow">...................</span></p>
+                <p>اسم المستلم: <span class="receiptRecieve">..................</span></p>
+            </footer>                
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class="recipt-content">
+            <div class="header">
+                <div class="titleHeader">
+                    <h3>بيوتي سنتر <span class="engy">إنجـي</span></h3>
+                    <p>01158003238</p>
+                    <p>شارع طريق النصر - بعد التوحيد والنور ب 200 متر - بجوار فرن السفير الدور الثاني</p>
+                </div>
+                <div class="logo">
+                    <h4>مع إنجي انتي في حتة تانية خالص</h4>
+                    <img src="../../img/logo.jpg" alt="logo">
+                </div>
+            </div>
+            <div class="content">
+                <div class="content-details">
+                    <p>اسم موظف الميكب : <span class="receiptMakeUpName">.....................................................</span></p>
+                    <p>اسم المستخدم  : <span class="receiptUserName">.....................................................</span></p>
+                    <p>تاريخ الحجز : <span class="receiptDateReserve">...................................................</span></p>
+                    <p>رقم الحجز : <span class="receiptNumReserve">......................................................</span></p>
+                    <p>اسم العروسة : <span class="receiptNamePers">....................................................</span></p>
+                    <p>اسم الصنف : <span class="receiptItems">...........................................................</span></p>
+                    <p> المبلغ : <span class="receiptPriceItems">......................................................</span></p>
+                    <p>المبلغ المدفوع : <span class="receiptPaid">.......................................................</span></p>
+                    <p> الباقي : <span class="receiptRemain">.............................................................</span></p>
+                    
+                </div>
+                
+                
+            </div>
+
+            <hr width="50%" style="margin:10px auto;">
+
+            <footer>
+                <p>نحرير في :  <span class="receiptDateNow">...................</span></p>
+                <p>اسم المستلم: <span class="receiptRecieve">..................</span></p>
+            </footer>                
+    
+        </div>
+    </div>
+    
+    <script src="js/main-dist.js"></script>
+</body>
+</html>

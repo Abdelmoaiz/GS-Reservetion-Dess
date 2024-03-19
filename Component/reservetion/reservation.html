@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الحجوزات</title>
+    <link rel="stylesheet" href="css/style-dist.css">
+</head>
+<body dir="rtl">
+    <div class="alarm1">
+        <div class="inputsAlarm">
+            <h3 style="color: #fff; margin: 10px;">هل تريد الحذف</h3>
+            <input type="password" id="passDelete" placeholder="ادخل الباسوورد">
+            <div class="buttons">
+                <button id="btnCheckEdite" onclick="checkPass1();">موافق</button>
+                <button id="btnCancel" onclick="exitePass();">الغاء</button>
+            </div>
+        </div>
+    </div>
+    <div class="alarm2">
+        <div class="inputsAlarm">
+            <h3 style="color: #fff; margin: 10px;">هل تريد الحذف</h3>
+            <div class="buttons">
+                <button id="btnCheckEdite" onclick="checkPass2();">موافق</button>
+                <button id="btnCancel" onclick="exitePass();">الغاء</button>
+            </div>
+        </div>
+    </div>
+    <div class="reservation">
+        <header>
+            <a class="home" href="../home/home.html"><img src="../../img/huanfang.ico" alt="home"></a>
+            <span class="userName"></span>
+            <h1>الحجوزات</h1>
+            <span class="dateAndTime"></span>
+            <a class="exit" href="../../index.html"><img src="../../img/cancel.ico" alt="exit"></a>
+        </header>
+        <aside>
+            <button id="btnAllReservation" onclick="showTableAllReservation();">جميع الحجوزات</button>
+            <button id="btnSear" onclick="showSearch(this.value);">بحث</button>
+            <button id="btnDress" onclick="showReservation();">حجز جديد</button>
+            <button id="btnPrintEmpty1" onclick="printInvoiceEmpty();">طباعة فواتير فارغة</button>
+            <button id="btnSear" onclick="window.location.reload();">تحديث</button>
+            <!-- <button id="btnPrintEmpty2" onclick="printReceiptEmpty();">طباعة ايصالات فارغة</button> -->
+
+
+        </aside>
+        <div class="content">
+            <div class="showMessage">
+                <h3>تم حجز هذاالصنف مسبقا في هذا التاريخ</h3>
+                <div class="divInputs">
+                    <input type="button" class="btnOk" onclick="resetInputs();" value="موافق">
+                    <input type="button" class="btnCancel" onclick="refresh();" value="الغاء">
+                </div>
+            </div>
+            <section id="allDetails" >
+                <div class="cruds">
+                    <table border="1">
+                        <tr>
+                            <th colspan="17" class="headTable">تفاصيل الحجز</th>
+                        </tr>
+                        <tr>
+                            <th>م</th>
+                            <th>التاريخ</th>
+                            <th>الوقت</th>
+                            <th>رقم الحجز</th>
+                            <th>الاسم</th>
+                            <th>تاريخ الحجز</th>
+                            <th> رقم الهاتف</th>
+                            <th> رقم الصنف</th>
+                            <th>الصنف</th>
+                            <th>السعر</th>
+                            <th>المبلغ المدفوع</th>
+                            <th>المبلغ المتبقي</th>
+                            <th> تعديل</th>
+                            <th>حذف</th>
+                            
+                            
+
+                        </tr>
+                        <tbody class="AllDetails">
+                            
+                            
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </section>
+            <section id="AllReservation">
+                <div class="cruds">
+                    <table border="1">
+                        <tr>
+                            <th colspan="14" class="headTable">جميع الحجوزات</th>
+                        </tr>
+                        <tr>
+                            <!-- <th>م</th> -->
+                            <th>التاريخ</th>
+                            <th>الوقت</th>
+                            <th>اسم المستخدم</th>
+                            <th>رقم الحجز</th>
+                            <th>الاسم</th>
+                            <th>تاريخ الحجز</th>
+                            <th>عرض التفاصيل</th>
+                            <th>ايصال نقدية</th>
+                            <th>حذف</th>
+                        </tr>
+                        <tbody class="AllReservation">
+                            
+                            
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </section>
+            
+            <section class="inputsItems">
+                <div style="display: flex;">
+                    <button id="btnShowInp" onclick="showInputs();">اضافة</button>
+                    <input id="btnSearDe" value="" placeholder="بحث" onkeyup="showSearch2(this.value);">
+                    <!-- <input type="date" id="SearchDataRes" value="" onchange="searchDateReserve(value);"> -->
+                </div>
+                
+                <form class="inputs" id="reserveAdd"  novalidate>
+                    <div class="add">
+                        <div class="priceOnly infoPersonal">
+                            <input type="text"  value="" id="dateNow" style="display: none;">
+                            <input type="date"  value="" id="startReserve"  >
+                            <input type="date"  value="" id="endReserve"   style="display: none;">
+                            <input type="text"  value="" id="nameReserve" placeholder="ادخل الاسم" onkeyup="getNumReserve();" minlength="5" required>
+                            <input type="text"  value="" id="numPersonal" minlength="14" maxlength="14" placeholder="رقم قومي" >
+                            <input type="tel"  value="" id="phone" minlength="11" maxlength="11" placeholder="رقم التليفون" >
+                            <input type="text"  value="" id="adress" placeholder="ادخل العنوان" >
+                        </div>
+                        <div class="priceOnly infoItems">
+                            <input type="text"  value="" onkeyup='' id="numReserve" placeholder="رقم الحجز " minlength="4" readonly required>
+                            <input type="text"  value="" onkeyup='checkReserve();' id="barcode" placeholder="ادخل الباركود" minlength="5" required>
+                            <input type="text" id="itemsDress" value="" placeholder="الصنف" >
+                            <input type="text" id="itemsOthers" value="" placeholder="اصناف اخري"> 
+                        </div>
+                        
+                        <div class="priceOnly infoPrice">
+                            <input  type="number"  value="" id="totalPrice" onkeyup="calcRemain();" placeholder="السعر" >
+                            <input  type="number"  value="" id="pricePaid" onkeyup="calcRemain();" placeholder="المبلغ المدفوع" >
+                            <input  type="number"  value="0" id="priceRemaining"  placeholder="المبلغ المتبقي" >
+                        </div>
+                    </div>
+                    <div class="settlement">
+                        <div class="priceOnly infoSettlement">
+                            <input type="date"  value="" id="dateSettle"  required>
+                            <input  type="number"  value="0" id="remainAll"  placeholder="المبلغ المتبقي" required>
+                            <input  type="number"  value="0" id="priceSettle" onkeyup="calcTotal();" placeholder="المبلغ المدفوع" required>
+                            <input  type="number"  value="0" id="totalRemainAll" placeholder="المتبقي" required>    
+                        </div>
+                        <div class="priceOnly infoRecieved">
+                            <input type="text" value="" id="namRecieve" placeholder="اسم المستلم">
+                            <input type="text" value="" id="idNameRecieve" minlength="14" maxlength="14" placeholder="الرقم القومي للمستلم">
+                            <input type="text" value="" id="adressRecieve" placeholder="عنوان المستلم">
+                            <input type="text" value="" id="phoneRecieve" minlength="11" maxlength="11" placeholder="رقم التليفون المستلم">  
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="priceOnly">
+                        <button type="submit"  id="create">اضافة حجز</button>
+                        <button type="reset" onclick='refresh();'>الغاء</button>
+                    </div>
+                </form>
+                
+                
+                <div class="cruds viewTable">
+                    <table border="1">
+                        <tr>
+                            <th colspan="14" class="headTable">حجز</th>
+                        </tr>
+                        <tr>
+                            <!-- <th>م</th> -->
+                            <th>التاريخ</th>
+                            <th>الوقت</th>
+                            <th>اسم المستخدم</th>
+                            <th>رقم الحجز</th>
+                            <th>الاسم</th>
+                            <th>تاريخ الحجز</th>
+                            <th>عرض التفاصيل</th>
+                            <th>ايصال نقدية</th>
+                            <th>اضافة</th>
+                            <th>تصفية</th>
+                            <th>حذف</th>
+                        </tr>
+                        <tbody class="tbodyReserve">
+                            
+                            
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </section>
+            <section class="invoiceClient">
+                <div >
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th colspan="11" class="headNumReserve">حجز جديد</th>
+                            </tr>
+                            <tr>
+                                <th>م</th>
+                                <th>التاريخ</th>
+                                <th>اسم المستخدم</th>
+                                <th>الاسم</th>
+                                <th>رقم الحجز</th>
+                                <th>تاريخ الحجز</th>
+                                <th>فستان</th>
+                                <th>اصناف اخري</th>
+                                <th>المبلغ</th>
+                                <th>المبلغ المدفوع</th>
+                                <th>المبلغ المتبقي</th>   
+                                <a href="../print/printReserve/reservation.html"></a>                         
+                            </tr>
+                        </thead>
+                        <tbody class="invoiceReserve">
+
+                        </tbody>
+                    </table>
+                    <div class="priceOnly">
+                        <button type="submit"  id="saveData">حفظ</button>
+                        <button type="reset" onclick="refresh();">الغاء</button>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="search">
+                <form action="" class="inputs" id="search">
+                    <div class="priceOnly">
+                        <input type="text"  id="inputSearch" onkeyup="searchNumReserve(this.value)" placeholder="ادخل (باركود - رقم حجز - اسم العميلة)">
+                        <input type="date" id="dateSearch"  onchange="searchDateReserve(this.value)">
+                        <button id="btnPrint" onclick="printSearch();">طباعة</button>
+                    </div>
+                </form>
+                
+                <div class="cruds">
+                    <table border="1">
+                        <tr>
+                            <th colspan="13" class="headTable">نتائج البحث</th>
+                        </tr>
+                        <tr>
+                            <th>م</th>
+                            <th>التاريخ</th>
+                            <th>اسم المستخدم</th>
+                            <th>رقم الحجز</th>
+                            <th>الاسم</th>
+                            <th>تاريخ الحجز</th>
+                            <th>رقم الصنف</th>
+                            <th>الاصناف</th>
+                            <th>السعر</th>
+                            <th>المبلغ المدفوع</th>
+                            <th>المبلغ المتبقي</th>
+                            <th>ايصال الطباعة</th>
+                            
+                        </tr>
+                        <tbody class="tbodysearch">
+                            
+                            
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </section>
+            
+        </div>
+        
+    </div>
+    <div class="invoice">
+        <div class="invoice-content">
+            <div class="header">
+                <div class="titleHeader">
+                    <h3>بيوتي سنتر <span class="engy">إنجـي</span></h3>
+                    <p>01158003238</p>
+                    <p>شارع طريق النصر - بعد التوحيد والنور ب 200 متر - بجوار فرن السفير الدور الثاني</p>
+                </div>
+                <div class="logo">
+                    <h4>مع إنجي انتي في حتة تانية خالص</h4>
+                    <img src="../../img/logo.jpg" alt="logo">
+                </div>
+            </div>
+            
+            <div >
+                <p>اسم العميل : <span class="nameInvoice">...................................................................................................................................</span></p>
+                <p>اسم المستلم : <span class="recieveInvoice">...................................................................................................................................</span></p>
+                <p>رقم قومي : <span class="idInvoice"> .................................................................</span> ت :  <span class="phoneInvoice"> .................................................................</span></p>
+                <p>العنوان : <span class="adressInvoice">...................................................................................................................................</span></p>
+                <ol>شروط العقد :-
+                    <li>يتحمل (العميل / العميلة) الموقع علي هذا العقد كافة الاضرار الناجمة عن سوء استخدام الاشياء المؤجرة من المكان.</li>
+                    <li>يجب علي (العميل / العميلة ) تسليم الفستان في موعد اقصاه الساعة الحادية عشر من صباح يوم الاستخدام والا سوف يعتبر بعد الساعة الحادية عشر صباحا ايجار اخر بنفس المبلغ المذكور فالعقد </li>
+                    <li>السنتر غير مسئول عن فقدان اي متعلقات شخصية في المكان.</li>
+                    <li>اقصي عدد مرافق مع العروسة اثنان فقط</li>
+                    <li>الالتزام التام بالمواعيد التي يحددها السنتر لضبط مراحل الميكب والتواجد فالمواعيد المحددة ويعتبر السنتر غير مسئول في حالة تأخير العروسة اذا لزم الامر لذا لابد وضروري التواجد في الميعاد المحدد رجاء.</li>
+                    <li>يجب علي العميل تصفية المبلغ المتبقي قبل مغادرة السنتر.</li>
+        
+                </ol>
+                <p style="text-align: center;margin-bottom: 20px;">ولكم منا جزيل الشكر والف الف مبرووووووووك</p>
+                
+            </div>
+            <hr width="50%" style="margin:10px auto;">
+            <footer>
+                <h3>إقرار</h3>
+                <p>أقر أنا الموقع أدناه الاسم : <span>..................................................</span> أنه تم استلام: <span class="itemsRecieve">.................................................</span></p>
+                <p style="text-align: right;">واتحمل كافة الأضرار نتيجة سوء الاستخدام لا قدر الله.</p>
+            </footer>
+        </div>
+        
+        <br>
+        
+        <div class="invoice-content">
+            <div class="header">
+                <div class="titleHeader">
+                    <h3>بيوتي سنتر <span class="engy">إنجـي</span></h3>
+                    <p>01158003238</p>
+                    <p>شارع طريق النصر - بعد التوحيد والنور ب 200 متر - بجوار فرن السفير الدور الثاني</p>
+
+                </div>
+                <div class="logo">
+                    <h4>مع إنجي انتي في حتة تانية خالص</h4>
+                    <img src="../../img/logo.jpg" alt="logo">
+                </div>
+            </div>
+            
+            <div >
+                <p>اسم العميل : <span class="nameInvoice">...................................................................................................................................</span></p>
+                <p>اسم المستلم : <span class="recieveInvoice">...................................................................................................................................</span></p>
+                <p>رقم قومي : <span class="idInvoice"> .................................................................</span> ت :  <span class="phoneInvoice"> .................................................................</span></p>
+                <p>العنوان : <span class="adressInvoice">...................................................................................................................................</span></p>
+                <ol>شروط العقد :-
+                    <li>يتحمل (العميل / العميلة) الموقع علي هذا العقد كافة الاضرار الناجمة عن سوء استخدام الاشياء المؤجرة من المكان.</li>
+                    <li>يجب علي (العميل / العميلة ) تسليم الفستان في موعد اقصاه الساعة الحادية عشر من صباح يوم الاستخدام والا سوف يعتبر بعد الساعة الحادية عشر صباحا ايجار اخر بنفس المبلغ المذكور فالعقد </li>
+                    <li>السنتر غير مسئول عن فقدان اي متعلقات شخصية في المكان.</li>
+                    <li>اقصي عدد مرافق مع العروسة اثنان فقط</li>
+                    <li>الالتزام التام بالمواعيد التي يحددها السنتر لضبط مراحل الميكب والتواجد فالمواعيد المحددة ويعتبر السنتر غير مسئول في حالة تأخير العروسة اذا لزم الامر لذا لابد وضروري التواجد في الميعاد المحدد رجاء.</li>
+                    <li>يجب علي العميل تصفية المبلغ المتبقي قبل مغادرة السنتر.</li>
+        
+                </ol>
+                <p style="text-align: center;margin-bottom: 20px;">ولكم منا جزيل الشكر والف الف مبرووووووووك</p>
+                
+            </div>
+            
+            <hr width="50%" style="margin:10px auto;">
+
+            <footer>
+                <h3>إقرار</h3>
+                <p>أقر أنا الموقع أدناه الاسم : <span>..................................................</span> أنه تم استلام: <span class="itemsRecieve">.................................................</span></p>
+                <p style="text-align: right;">واتحمل كافة الأضرار نتيجة سوء الاستخدام لا قدر الله.</p>
+            </footer>
+        </div>
+    </div>
+
+    <div class="receipt">
+        <div  class="recipt-content">
+            <div class="header">
+                <div class="titleHeader">
+                    <h3>بيوتي سنتر <span class="engy">إنجـي</span></h3>
+                    <p>01158003238</p>
+                    <p>شارع طريق النصر - بعد التوحيد والنور ب 200 متر - بجوار فرن السفير الدور الثاني</p>
+                </div>
+                <div class="logo">
+                    <h4>مع إنجي انتي في حتة تانية خالص</h4>
+                    <img src="../../img/logo.jpg" alt="logo">
+                </div>
+            </div>
+            <div class="content">
+                <div class="mainDetails">
+                    <h4 class="receiptNamePers"></h4>
+                    <h4 class="receiptPhone"></h4>
+                </div>
+                <div class="mainDetails">
+                    <h4 class="receiptAdress"></h4>
+                    <h4 class="receiptNumReserve"></h4>
+                </div>
+                <!-- <div class="mainDetails">
+                    <h4 class=""></h4>
+                </div> -->
+                
+
+                <table border="1" style="margin: auto;">
+                    <thead>
+                        <tr>
+                            <td>رقم الصنف</td>
+                            <td>اسم الصنف</td>
+                            <td>صنف اخر</td>
+                            <td>تاريخ الاستلام</td>
+                            <td>المبلغ</td>
+                            <td>المبلغ المدفوع</td>
+                            <td>الباقي</td>
+
+                        </tr>
+                    </thead>
+                    <tbody class="tbodyRecip">
+                        
+                        
+                    </tbody>
+                </table>
+               
+                
+            </div>
+            شروط العقد :-
+            <br>
+            <p>1-يجب علي (العميل ) تسليم الفستان في موعد اقصاه ( 11 صباحا) والا سوف يعتبر بعد الساعة ( 11 صباحا) ايجار اخر بنفس المبلغ المذكور فالعقد </p>
+            <p>2-يتحمل (العميل) الموقع علي هذا العقد كافة الاضرار الناجمة عن سوء استخدام الاشياء المؤجرة من المكان.</p>
+            <p>3-السنتر غير مسئول عن فقدان اي متعلقات شخصية في المكان.</p>
+            <p>4-اقصي عدد مرافق مع العروسة اثنان فقط</p>
+            <p>5-الالتزام التام بالمواعيد التي يحددها السنتر لضبط مراحل الميكب والتواجد فالمواعيد المحددة ويعتبر السنتر غير مسئول في حالة تأخير العروسة اذا لزم الامر لذا لابد وضروري التواجد في الميعاد المحدد رجاء.</p>
+            <p>6-يجب علي العميل تصفية المبلغ المتبقي قبل مغادرة السنتر.</p>
+            <p>7-لا يجوز استرداد العربون لاي ظرف مهما كام (مع امكانية تغيير الموعد او الصنف)</p>
+            
+            <hr width="50%" style="margin:10px auto;">
+
+            <footer>
+                <p> تاريخ التحرير  :  <span class="receiptDateNow">...................</span></p>
+                <p> وقت التحرير  :  <span class="receiptTimeNow">...................</span></p>
+                <p>اسم المستخدم: <span class="receiptRecieve">..................</span></p>
+            </footer>                
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div  class="recipt-content">
+            <div class="header">
+                <div class="titleHeader">
+                    <h3>بيوتي سنتر <span class="engy">إنجـي</span></h3>
+                    <p>01158003238</p>
+                    <p>شارع طريق النصر - بعد التوحيد والنور ب 200 متر - بجوار فرن السفير الدور الثاني</p>
+                </div>
+                <div class="logo">
+                    <h4>مع إنجي انتي في حتة تانية خالص</h4>
+                    <img src="../../img/logo.jpg" alt="logo">
+                </div>
+            </div>
+            <div class="content">
+                <div class="mainDetails">
+                    <h4 class="receiptNamePers"></h4>
+                    <h4 class="receiptPhone"></h4>
+                </div>
+                <div class="mainDetails">
+                    <h4 class="receiptAdress"></h4>
+                    <h4 class="receiptNumReserve"></h4>
+                </div>
+                <table border="1" style="margin: auto;">
+                    <thead>
+                        <tr>
+                            <td>رقم الصنف</td>
+                            <td>اسم الصنف</td>
+                            <td>صنف اخر</td>
+                            <td>تاريخ الاستلام</td>
+                            <td>المبلغ</td>
+                            <td>المبلغ المدفوع</td>
+                            <td>الباقي</td>
+
+                        </tr>
+                    </thead>
+                    <tbody class="tbodyRecip">
+                        
+                    </tbody>
+                </table>
+               
+                
+            </div>
+            شروط العقد :-
+            <br>
+            <p>1-يجب علي (العميل ) تسليم الفستان في موعد اقصاه ( 11 صباحا) والا سوف يعتبر بعد الساعة ( 11 صباحا) ايجار اخر بنفس المبلغ المذكور فالعقد </p>
+            <p>2-يتحمل (العميل) الموقع علي هذا العقد كافة الاضرار الناجمة عن سوء استخدام الاشياء المؤجرة من المكان.</p>
+            <p>3-السنتر غير مسئول عن فقدان اي متعلقات شخصية في المكان.</p>
+            <p>4-اقصي عدد مرافق مع العروسة اثنان فقط</p>
+            <p>5-الالتزام التام بالمواعيد التي يحددها السنتر لضبط مراحل الميكب والتواجد فالمواعيد المحددة ويعتبر السنتر غير مسئول في حالة تأخير العروسة اذا لزم الامر لذا لابد وضروري التواجد في الميعاد المحدد رجاء.</p>
+            <p>6-يجب علي العميل تصفية المبلغ المتبقي قبل مغادرة السنتر.</p>
+            <p>7-لا يجوز استرداد العربون لاي ظرف مهما كام (مع امكانية تغيير الموعد او الصنف)</p>
+            
+
+            <hr width="50%" style="margin:10px auto;">
+
+            <footer>
+                <p> تاريخ التحرير  :  <span class="receiptDateNow">...................</span></p>
+                <p> وقت التحرير  :  <span class="receiptTimeNow">...................</span></p>
+                <p>اسم المستخدم: <span class="receiptRecieve">..................</span></p>
+            </footer>                
+        </div>
+    </div>
+    <script src="js/reserve-dist.js"></script>
+</body>
+</html>
